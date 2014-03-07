@@ -6,6 +6,10 @@ These scripts are used for general System Admin tasks
  * find_free_ip.py  Find Free (No dns name assign and Not Pingable) ip address
  * pingp.py     Ping with pictures which draw the response time line
 
+#### Linux system package require
+```bash
+sudo apt-get install build-essential
+sudo apt-get install libpng12-dev
 
 #### Setup required python virtualenv
 ```bash

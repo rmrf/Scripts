@@ -16,6 +16,7 @@ Author: ryan.qian@gmail.com
 import re
 import os
 import sys
+import argparse
 import threading
 import subprocess
 from lib.common import os_check, ping_cmd_choose
@@ -96,7 +97,8 @@ def new_make_plot(out_fn):
 
         ppl.plot(ax, x_data, y_data, label=k, linewidth=0.75)
 
-    ppl.legend(ax)
+    #ppl.legend(ax)
+    ppl.legend(ax, loc='lower left', ncol=4)
     #ax.set_title('test')
     fig.savefig(out_fn)
 
@@ -105,7 +107,21 @@ def new_make_plot(out_fn):
 
 
 def main():
-    os_name = os_check()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-s", "--silent", help="Silent the ping output",
+            action="store_true")
+    parser.add_argument("-p", "--picture", help="output picture file name",
+            action="store_true")
+    parser.add_argument("target", type=str,
+                        help="Ping targets")
+    args = parser.parse_args()
+
+    silent = 0
+    if args.silent:
+        print
+        print "Silent the ping output..."
+        silent = 1
+    #os_name = os_check()
     #if os_name != 'linux':
         #print "Exit, This script can only run on Linux"
         #sys.exit(1)
@@ -115,7 +131,7 @@ def main():
         usage()
         sys.exit(1)
 
-    multi_ping('ping', targets, 1)
+    multi_ping('ping -D', targets, silent)
 
     #print ping_results
 
