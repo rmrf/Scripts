@@ -10,6 +10,7 @@ These scripts are used for general System Admin tasks
 ```bash
 sudo apt-get install build-essential
 sudo apt-get install libpng12-dev
+```
 
 #### Setup required python virtualenv
 ```bash
@@ -19,10 +20,12 @@ virtualenv --distribute .venv
 source env.sh
 easy_install -U distribute
 pip install -r pip-requires.txt
+```
 
 
 #### How to use
 ```bash
 source env.sh
+```
 
 Then directly run these scripts, it's have self illustration
